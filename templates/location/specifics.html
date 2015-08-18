@@ -1,0 +1,10 @@
+<div class="row">
+<div class="col-md-4">
+<p><b>Pints: </b>{% if location.pints %}{{ location.get_pints_display }}{% else %}----{% endif %}</p>
+<p><b>Wifi: </b>{% if location.wifi %}{{ location.get_wifi_display }}{% else %}----{% endif %}</p>
+<p><b>Electric Outlets: </b>{% if location.outlets %}{{ location.get_outlets_display }}{% else %}----{% endif %}</p>
+<p><b>Beer Selection: </b>{% if location.selection %}{{ location.get_selection_display }}{% else %}----{% endif %}</p>
+<p><b>Outdoor Seating: </b>{% if location.outdoor %}{{ location.get_outdoor_display }}{% else %}----{% endif %}</p>
+<p><b>Food: </b>{% if location.food %}{{ location.get_food_display }}{% else %}----{% endif %}</p>
+</div>
+</div>

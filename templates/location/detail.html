@@ -1,0 +1,58 @@
+{% extends "base/theme.html" %}
+{% block main_content %}
+<div class="data-layer">
+    <ul>
+        <li class="location-data" data-latitude="{{ location.position.latitude }}" data-longitude="{{ location.position.longitude }}">{{ location.title }}</li>
+    </ul>
+</div>
+
+<div class="container">
+       <div class="col-md-12">
+				<div class="row">
+ 						<div class="col-md-8">
+ 							<h3><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h3>
+ 						</div>
+ 						<div class="col-md-4">
+ 							<h3>{% include 'base/rating.html' with rating=location.get_average_rating %}</h3>
+ 						</div>
+ 					</div>
+
+ 					<div class="row">
+	 					<div class="col-md-4">
+	 						<div class="wide-map short-map" id="map">	
+	 					</div>
+	 				</div>		
+ 						<div class="row">
+ 							{% if location.address %}<p><b>Location: </b>  {{ location.address }}</p>{% endif %}
+	 						{% if location.hours %}<p><b>Hours:</b>  {{ location.hours }}</p>{% endif %}
+	 						{% if location.website %}<p><b>Website:</b>  {{ location.website }}</p>{% endif %}
+	 						{% include 'location/specifics.html' with location=location %}
+ 						</div>
+ 						<div class="row">
+ 							<div class="col-md-8 descrip">
+ 								<p>{{ location.description }}</p>
+ 							</div>
+ 						</div>
+ 						<div class="row">
+							<div class="col-md-8 gwynimages">
+ 								{% if location.image_file %}
+ 									<img src="{{ location.image_file.url }}"></img><p>
+ 								{% endif %}
+ 							</div>
+ 						</div>
+ 							<div class="col-md-12">
+	 								<a type="button" href="{% url 'location_update' pk=location.id %}" class="btn btn-info">Update Location Details</a>
+	 							
+	 								<a type="button" href="{% url 'review_create' pk=location.id %}" class="btn btn-info">Add A Review</a>
+							</div>
+ 							{% for review in location.get_reviews %}
+ 								{% include 'base/review.html' with location=location %}
+ 							{% endfor %}
+ 						</div> 
+ 					</div>
+ 				</div>
+			</div>
+ 			
+ 		</div>
+
+{% endblock %}

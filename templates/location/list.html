@@ -1,0 +1,36 @@
+{% extends "base/theme.html" %}
+{% block main_content %}
+<div class="data-layer">
+ 	<ul>
+ 	{% for location in object_list %}
+ 		<li class="location-data" data-latitude="{{ location.position.latitude }}" data-longitude="{{ location.position.longitude }}" data-id="{{ location.id }}">{{ location.title }} {{ location.position.latitude }}</li>
+ 	{% endfor %}
+ 	</ul>
+</div>
+<div id="map" class="wide-map"></div>
+
+<div class="container">
+<div class="row main-content">
+ 	<div class="col-md-2"></div>
+ 		<div class="col-md-8">
+ 			{% for location in object_list %}
+ 				 <div class='row'>
+ 					<div class="col-md-8">
+ 						<h3><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h3>
+ 					</div>
+ 					<div class="col-md-4">
+ 						<h3>{% include 'base/rating.html' with rating=location.get_average_rating %}</h3>
+ 					</div>
+ 				 	<p> Address: {{ location.address }}</p>
+ 				 	<p> Hours: {{ location.hours }}</p>
+ 					<p>{{ location.description }}</p>
+ 					{% if location.image_file %}
+ 						<img class="img-responsive" src="{{ location.image_file.url }}"></img><p>
+ 					{% endif %}	
+				</div>
+ 			{% endfor %}
+ 		</div>
+ 	</div>
+</div>
+</div>
+{% endblock %}
