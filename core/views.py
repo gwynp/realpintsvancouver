@@ -4,7 +4,9 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
+from django.shortcuts import render
 from sitegate.decorators import redirect_signedin, sitegate_view
+#from sitegate.signup_flows.classic import ClassicSignup
 #from django.generic.list import ListView
 import core.models as coremodels
 
@@ -63,5 +65,7 @@ class ReviewUpdateView(UpdateView):
         return self.object.location.get_absolute_url
 
 @sitegate_view(widget_attrs={'class': 'form-control', 'placeholder': lambda f: f.label}, template='form_bootstrap3') # This also prevents logged in users from accessing our sign in/sign up page.
+
+#@sitegate_view(flow=ClassicSignup)
 def entrance(request):
     return render(request, 'base/entrance.html', {'title': 'Sign in & Sign up'})
