@@ -23,6 +23,7 @@
 	 					</div>
 	 				</div>		
  						<div class="row">
+ 							{% if location.neighbourhood %}<p><b>Location: </b>  {{ location.neighbourhood }}</p>{% endif %}
  							{% if location.address %}<p><b>Location: </b>  {{ location.address }}</p>{% endif %}
 	 						{% if location.hours %}<p><b>Hours:</b>  {{ location.hours }}</p>{% endif %}
 	 						{% if location.website %}<p><b>Website:</b>  {{ location.website }}</p>{% endif %}

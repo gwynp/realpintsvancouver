@@ -21,6 +21,7 @@
  					<div class="col-md-4">
  						<h3>{% include 'base/rating.html' with rating=location.get_average_rating %}</h3>
  					</div>
+ 				 	<p> Neighbourhood: {{ location.neighbourhood }}</p>
  				 	<p> Address: {{ location.address }}</p>
  				 	<p> Hours: {{ location.hours }}</p>
  					<p>{{ location.description }}</p>

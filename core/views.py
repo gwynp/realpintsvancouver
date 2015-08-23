@@ -9,6 +9,9 @@ from sitegate.decorators import redirect_signedin, sitegate_view
 #from sitegate.signup_flows.classic import ClassicSignup
 #from django.generic.list import ListView
 import core.models as coremodels
+from django.conf import settings
+resp = {}
+resp['MEDIA_URL'] = settings.MEDIA_URL
 
 # Create your views here.
 

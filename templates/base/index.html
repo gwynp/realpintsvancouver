@@ -47,18 +47,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Gwyn</a>
+          <a class="navbar-brand" href="/location">Real Pints in Vanvouver</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-          {% block navigation %}
-          {% endblock %}
-          </ul>
-            {% block search %}
-            {% endblock %}
+            <ul class="nav navbar-nav">
+                {% block navigation %}
+                {% endblock %}
+                <li>Because Sleeves Suck</li>
+            </ul>
+                {% block search %}
+                {% endblock %}      
+            <div class="navbar-header navbar-right">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/location">Because Sleeves Suck</a>
+        </div>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
         {% block main_content %}
     <div class="container">
 
