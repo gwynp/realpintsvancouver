@@ -714,11 +714,11 @@ section#contact:-ms-input-placeholder {
 
 section#contact .text-danger {
     color: #e74c3c;
+    text-align: center;
 }
 
 footer {
     padding: 25px 0;
-    text-align: center;
 }
 
 footer span.copyright {

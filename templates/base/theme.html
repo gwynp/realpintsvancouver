@@ -12,6 +12,15 @@
  {% endif %} 
  
 {% endblock %}
+
+{% block search %}
+<form action="/search/" class="navbar-form navbar-right" method="get">
+ <div class="form-group">
+ <input type="text" placeholder="Search" class="form-control" name="query"></input>
+ </div>
+</form>
+{% endblock %}
+
 {% block main_content %}
 
 {% endblock %}
