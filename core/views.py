@@ -6,7 +6,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render
-from sitegate.decorators import redirect_signedin, sitegate_view
+#from sitegate.decorators import redirect_signedin, sitegate_view
 #from sitegate.signup_flows.classic import ClassicSignup
 #from django.generic.list import ListView
 import core.models as coremodels
@@ -14,6 +14,9 @@ from django.conf import settings
 from core.forms import UserForm, UserProfileForm
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect, HttpResponse
 resp = {}
 resp['MEDIA_URL'] = settings.MEDIA_URL
 
@@ -71,7 +74,7 @@ class ReviewUpdateView(UpdateView):
     def get_success_url(self):
         return self.object.location.get_absolute_url
 
-@sitegate_view(widget_attrs={'class': 'form-control', 'placeholder': lambda f: f.label}, template='form_bootstrap3') # This also prevents logged in users from accessing our sign in/sign up page.
+#@sitegate_view(widget_attrs={'class': 'form-control', 'placeholder': lambda f: f.label}, template='form_bootstrap3') # This also prevents logged in users from accessing our sign in/sign up page.
 
 #@sitegate_view(flow=ClassicSignup)
 def entrance(request):
@@ -136,3 +139,27 @@ def register(request):
             'base/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
+
+def user_login(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/location/')
+            else: 
+                return HttpResponse("Your Rango account is disabled.")
+        else:
+            print "Invalid login details: {0}, {1}".format(username, password)
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        return render_to_response('base/login.html', {}, context)
+
+
+# Use the login_required() decorator to ensure only those logged in can access the view.
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/location/')

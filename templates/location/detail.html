@@ -26,7 +26,7 @@
  							{% if location.neighbourhood %}<p><b>Location: </b>  {{ location.neighbourhood }}</p>{% endif %}
  							{% if location.address %}<p><b>Location: </b>  {{ location.address }}</p>{% endif %}
 	 						{% if location.hours %}<p><b>Hours:</b>  {{ location.hours }}</p>{% endif %}
-	 						{% if location.website %}<p><b>Website:</b>  {{ location.website }}</p>{% endif %}
+	 						{% if location.website %}<p><b>Website:</b>  <a href="{{ location.website }}" target="_blank">{{ location.website }}</a></p>{% endif %}
 	 						{% include 'location/specifics.html' with location=location %}
  						</div>
  						<div class="row">

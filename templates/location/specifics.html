@@ -1,6 +1,11 @@
 <div class="row">
 <div class="col-md-4">
-<p><b>Pints: </b>{% if location.pints %}{{ location.get_pints_display }}{% else %}----{% endif %}</p>
+<p><b>On Tap: </b>{% if location.ontap %}
+						{{ location.ontap }}
+					{% else %}
+						WHATTTT----
+					{% endif %}
+				</p>
 <p><b>Wifi: </b>{% if location.wifi %}{{ location.get_wifi_display }}{% else %}----{% endif %}</p>
 <p><b>Electric Outlets: </b>{% if location.outlets %}{{ location.get_outlets_display }}{% else %}----{% endif %}</p>
 <p><b>Beer Selection: </b>{% if location.selection %}{{ location.get_selection_display }}{% else %}----{% endif %}</p>
