@@ -92,22 +92,8 @@ WSGI_APPLICATION = 'coffeed.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-if ON_HEROKU == True:
-    # Parse database configuration from $DATABASE_URL
-    import dj_database_url
-    DATABASES['default'] = dj_database_url.config()
-else: 
-    DATABASES = {
-        'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'coffeed',
-        'USER': 'gwyn',
-        'PASSWORD': 'bruc1e',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-        }
 
-    }
+
 
 # Parse database configuration from $DATABASE_URL
 ##DATABASES['default'] = dj_database_url.config()
@@ -154,8 +140,4 @@ STATIC_ROOT = 'staticfiles'
 MEDIA_ROOT = '/opt/code/coffeed/media'
 MEDIA_URL = "/media/"
 
-
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
-
-#AWS_STORAGE_BUCKET_NAME = 'gwyn001'
+from settings_local import *

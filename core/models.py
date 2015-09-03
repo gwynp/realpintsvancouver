@@ -65,7 +65,7 @@ class Location(models.Model):
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     image_file = models.ImageField(upload_to='photos', null=True, blank=True)
-    ontap = models.CharField(help_text=u"Fat Tug, Red Racer, Guinness, etc", null=True, blank=True,max_length=300)
+    ontap = models.CharField(help_text=u"Fat Tug, Red Racer, Guinness, etc", null=True, blank=True, max_length=300)
     wifi = models.IntegerField(choices=WIFI_CHOICES, null=True, blank=True)
     selection = models.IntegerField(choices=COFFEE_CHOICES, null=True, blank=True)
     outdoor = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)

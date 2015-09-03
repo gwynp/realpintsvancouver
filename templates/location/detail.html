@@ -41,11 +41,17 @@
  								{% endif %}
  							</div>
  						</div>
- 							<div class="col-md-12">
-	 								<a type="button" href="{% url 'location_update' pk=location.id %}" class="btn btn-info">Update Location Details</a>
-	 							
-	 								<a type="button" href="{% url 'review_create' pk=location.id %}" class="btn btn-info">Add A Review</a>
-							</div>
+ 							{% if user.is_authenticated %}
+	 							<div class="col-md-12">
+		 								<a type="button" href="{% url 'location_update' pk=location.id %}" class="btn btn-info">Update Location Details</a>
+		 							
+		 								<a type="button" href="{% url 'review_create' pk=location.id %}" class="btn btn-info">Add A Review</a>
+								</div>
+							{% else %}
+								<div class="col-md-12">
+		 							<a type="button" href="/login/" class="btn btn-info">Sign Up to update this entry or leave a comment</a>
+								</div>
+							{% endif %}
  							{% for review in location.get_reviews %}
  								{% include 'base/review.html' with location=location %}
  							{% endfor %}
